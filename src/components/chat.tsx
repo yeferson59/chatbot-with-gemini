@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useRef, useEffect, FormEvent } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -74,11 +76,11 @@ export const Chat = () => {
 
   return (
     <Card className="w-full h-full flex flex-col bg-white dark:bg-gray-900">
-      <CardHeader className="flex-shrink-0 border-b">
+      <CardHeader className="shrink-0 border-b">
         <CardTitle>Chat con Bot</CardTitle>
       </CardHeader>
-      <CardContent className="flex-grow overflow-hidden flex flex-col p-0">
-        <ScrollArea className="flex-grow overflow-y-auto px-4" ref={scrollRef}>
+      <CardContent className="grow overflow-hidden flex flex-col p-0">
+        <ScrollArea className="grow overflow-y-auto px-4" ref={scrollRef}>
           <div className="py-4 space-y-6">
             {messages.map((message, index) => (
               <div
@@ -88,7 +90,7 @@ export const Chat = () => {
                 } gap-3`}
               >
                 {message.sender === "bot" && (
-                  <Avatar className="flex-shrink-0 mt-1">
+                  <Avatar className="shrink-0 mt-1">
                     <AvatarImage src="/bot-avatar.png" alt="Bot" />
                     <AvatarFallback>Bot</AvatarFallback>
                   </Avatar>
@@ -112,7 +114,7 @@ export const Chat = () => {
                   )}
                 </div>
                 {message.sender === "user" && (
-                  <Avatar className="flex-shrink-0 mt-1">
+                  <Avatar className="shrink-0 mt-1">
                     <AvatarImage src="/user-avatar.png" alt="User" />
                     <AvatarFallback>User</AvatarFallback>
                   </Avatar>
@@ -121,21 +123,17 @@ export const Chat = () => {
             ))}
           </div>
         </ScrollArea>
-        <div className="flex-shrink-0 p-4 border-t bg-white dark:bg-gray-900">
+        <div className="shrink-0 p-4 border-t bg-white dark:bg-gray-900">
           <form onSubmit={handleSubmit} className="flex flex-col gap-2">
             <div className="flex gap-2">
               <Textarea
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
                 placeholder="Escribe tu mensaje..."
-                className="flex-grow min-h-[2.5rem] max-h-[150px]"
+                className="grow min-h-[2.5rem] max-h-[150px]"
                 rows={1}
               />
-              <Button
-                type="submit"
-                className="flex-shrink-0"
-                disabled={isLoading}
-              >
+              <Button type="submit" className="shrink-0" disabled={isLoading}>
                 {isLoading ? (
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                 ) : (
